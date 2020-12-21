@@ -1,7 +1,8 @@
 <server>
 
     <featureManager>
-		<feature>javaee-8.0</feature>
+    	<feature>webProfile-8.0</feature>
+    	<feature>jaxws-2.2</feature>
     	<feature>mpMetrics-2.3</feature>
     </featureManager>
 
@@ -9,11 +10,9 @@
 
     <quickStartSecurity userName="admin" userPassword="admin"/>
     <ssl id="defaultSSLConfig" trustDefaultCerts="true"/>
-    <keyStore id="defaultKeyStore" password="oladmin"/>
 
     <applicationManager autoExpand="true"/>
     <applicationMonitor updateTrigger="mbean"/>
     <mpMetrics authentication="false"/>
 
-    <webApplication contextRoot="/" id="OLWeb" location="OLWeb.war" name="OLWeb"/>
 </server>

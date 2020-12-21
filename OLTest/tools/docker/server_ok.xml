@@ -1,7 +1,7 @@
 <server>
 
     <featureManager>
-		<feature>javaee-8.0</feature>
+    	<feature>webProfile-8.0</feature>
     	<feature>mpMetrics-2.3</feature>
     </featureManager>
 
@@ -15,5 +15,4 @@
     <applicationMonitor updateTrigger="mbean"/>
     <mpMetrics authentication="false"/>
 
-    <webApplication contextRoot="/" id="OLWeb" location="OLWeb.war" name="OLWeb"/>
 </server>
