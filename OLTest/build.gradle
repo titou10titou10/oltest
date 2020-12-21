@@ -1,0 +1,47 @@
+defaultTasks 'buildCleanAll'
+
+subprojects {
+   apply plugin: 'java'
+   
+   repositories { jcenter() }
+   
+   dependencies {
+      compileOnly('javax:javaee-api:8.0.1') {transitive = false}
+   }
+   
+   // Configuration compilateur java
+   sourceCompatibility = JavaVersion.VERSION_11
+   targetCompatibility = JavaVersion.VERSION_11
+   tasks.withType(JavaCompile) {
+       options.encoding = 'UTF-8'
+       options.debug = 'on'
+   }
+
+   jar {
+      duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+   }
+   
+}   
+
+task cleanAll(type:Delete) {
+   delete buildDir.path
+   subprojects.each {
+      it.afterEvaluate {
+         def cleanTask = it.tasks.findByName('clean')
+         if (cleanTask) {
+             dependsOn(cleanTask) 
+         }
+      }
+   }
+}
+
+task buildCleanAll(dependsOn: cleanAll) {
+   subprojects.each {
+      it.afterEvaluate {
+         def assembleTask = it.tasks.findByName('assemble')
+         if (assembleTask) {
+            dependsOn(assembleTask) 
+         }
+      }
+   }
+}

@@ -1,0 +1,5 @@
+apply plugin: 'war'
+ 
+dependencies {
+   compileOnly 'org.eclipse.microprofile.metrics:microprofile-metrics-api:2.3.2'
+}
