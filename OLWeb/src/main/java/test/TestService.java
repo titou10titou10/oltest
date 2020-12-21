@@ -13,7 +13,7 @@ public class TestService {
 
 	@GET
 	public String sayHello() {
-		return "hello";
+		return "hello from REST service";
 	}
 
 }

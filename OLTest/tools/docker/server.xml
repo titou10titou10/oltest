@@ -6,6 +6,13 @@
     	<feature>mpMetrics-2.3</feature>
     </featureManager>
 
+   <webApplication location="OLWeb.war" 
+                   name="OLWeb" 
+                   id="OLWeb" 
+                   contextRoot="/">
+      <classloader apiTypeVisibility="spec, ibm-api, api, stable, third-party"/>
+   </webApplication>
+   
     <httpEndpoint host="*" httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint"/>
 
     <quickStartSecurity userName="admin" userPassword="admin"/>
@@ -14,5 +21,9 @@
     <applicationManager autoExpand="true"/>
     <applicationMonitor updateTrigger="mbean"/>
     <mpMetrics authentication="false"/>
+    
+    <webContainer deferServletRequestListenerDestroyOnError="true" disableXPoweredBy="true" enableErrorExceptionTypeFirst="true"/>
+    <cdi12 enableImplicitBeanArchives="false"/>
+    <ejbContainer startEJBsAtAppStart="true"/>
 
 </server>
